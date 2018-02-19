@@ -22,13 +22,26 @@ Route::get('/admin-registration','AdminUserController@index')->name('admin-regis
 
 Route::get('/admin-login','AdminLoginController@index')->name('admin-login');
 
+Route::get('/admin-profile','AdminProfileController@index')->name('admin-profile');
+
+
+
 /* Route::post('admin-login-result',function() {
     echo 'its working!';
 })->name('admin-log');  */
 
 Route::post('admin-login-result','AdminLoginController@login')->name('admin-log');
 
-Route::post('/admin-login','AdminLoginController@logout')->name('admin-logout');
+Route::post('admin-profile-update','AdminProfileController@updateProfile')->name('admin-edit-profile');
+
+Route::post('admin-profile-change-password','AdminProfileController@changePassword')->name('admin-change-password');
+
+/*Route::post('admin-profile-update',function() {
+    echo 'updated!';
+})->name('admin-edit-profile');*/
+
+
+Route::any('/admin/logout','AdminLoginController@logadminout')->name('admin-logout');
 
 Route::get('/admin','AdminController@index')->name('admin');
 

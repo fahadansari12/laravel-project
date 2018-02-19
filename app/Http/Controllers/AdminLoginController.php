@@ -12,7 +12,16 @@ class AdminLoginController extends Controller
     //
     public function index(){
         return view('admin-login.admin-login');
+    
     }
+
+    public function logadminout()
+    {
+        Session::flush();
+        return Redirect::route('admin-login');
+    }
+
+
 
     public function login(Request $req) {
         $this->validate($req, [
@@ -24,9 +33,15 @@ class AdminLoginController extends Controller
         $password = $req->input('password');
 
         $checkLogin = DB::table('admin')->where(['email'=>$email,'password'=>$password])->first();
-
+        //dd(count($checkLogin));
+        //dd($checkLogin->dob);
         if(count($checkLogin) > 0){
              Session::put('admin-name', $checkLogin->name);
+             Session::put('admin-email', $checkLogin->email);
+             Session::put('admin-address', $checkLogin->address);
+             Session::put('admin-mobile',$checkLogin->mobile);
+             Session::put('admin-dob',$checkLogin->dob);
+             Session::put('admin-pic',$checkLogin->photo);
              return view('admin');            
         }
         else {
@@ -35,8 +50,12 @@ class AdminLoginController extends Controller
         }
     }
 
-    public function logout() {
-        Auth::logout();
+    /* public function logout() {
+        //Auth::logout();
+        Session::forget('admin-name');
         return Redirect::route('admin-login');
-    }
+    } */
+
+    
+
 }

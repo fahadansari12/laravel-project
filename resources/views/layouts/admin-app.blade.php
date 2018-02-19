@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin-profile.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -53,15 +54,22 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                <li>
+                                        <a href="{{ route('admin-profile') }}">
+                                            Profile
+                                        </a>
+
+                                         
+                                    </li>
+                                    
                                     <li>
                                         <a href="{{ route('admin-logout') }}">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form> 
+                                         
                                     </li>
+                                    
                                 </ul>
                             </li>
                         @else
@@ -80,16 +88,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    
-     <!--   <script type="text/javascript">
-        function autoRefreshPage()
-      {
-        window.location = window.location.href;
-      }
-        setInterval('autoRefreshPage()', 10000);
-     </script>   -->
-
-     
-    
+    <script src="{{ asset('js/profile-js.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            //alert("sdgdgg"); 
+            setInterval(function() {
+		    $('#res').load('{{ action("DemoController@index") }}');          
+            },1000);
+        });
+    </script>
+        
 </body>
 </html>
