@@ -1,8 +1,8 @@
 @extends('layouts.admin-app')
 @section('admin-content')
 <div class="row row-container">
-<h1 class="prof-head">Profile</h1>
-<div class="col-md-3 col-xs-12 col-sm-6 left-container">   
+    <h1 class="prof-head">Profile</h1>
+        <div class="col-md-3 col-xs-12 col-sm-6 left-container">   
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-<div class="col-md-offset-0 col-xs-12 col-sm-6 col-md-9" id="change-password" style="display:;">
+        <div class="col-md-offset-0 col-xs-12 col-sm-6 col-md-9" id="change-password" style="display:;">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-xs-12">
@@ -36,19 +36,11 @@
                         <div class="col-md-12 alert alert-success">
                             {{@session('change-password')}}
                         </div><br>
-                    @endif
+                        @endif
 
                         @if(Session::has('error'))
                         <div class="alert alert-warning"><strong>{{Session::get('error')}}</strong></div>
                         @endif
-                        
-
-                    <!--@if(@session('not-match'))
-                        <div class="col-md-12 alert alert-danger">
-                            {{@session('not-match')}}
-                        </div><br>
-                    @endif -->
-
                     
                         <form method="post" action="{{route('admin-change-password')}}" >
                         {{ csrf_field() }} 

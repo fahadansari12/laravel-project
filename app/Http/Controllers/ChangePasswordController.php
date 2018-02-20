@@ -14,6 +14,7 @@ class ChangePasswordController extends Controller
         return view('admin-change-password');
     }
 
+    // To Change the Password
     public function changePassword(Request $pass) {
 
         $this->validate($pass, [
@@ -30,7 +31,7 @@ class ChangePasswordController extends Controller
         $inputOld = $pass->input('admin-old-password');
         $inputNew = $pass->input('admin-new-password');
         $inputConfirm = $pass->input('admin-confirm-password');
-        //return dd($inputConfirm);
+        
         if($user->password == $inputOld) {
             if($inputNew == $inputConfirm) {
                 $user->password = $inputNew;

@@ -4,9 +4,15 @@
 
 <div class="row row-container">
         <h1 class="prof-head">Profile</h1>
-        @if(@session('update-response'))
+                    @if(@session('update-response'))
                         <div class="col-md-12 alert alert-success">
                             {{@session('update-response')}}
+                        </div><br>
+                    @endif
+
+                    @if(@session('update-pic'))
+                        <div class="col-md-12 alert alert-success">
+                            {{@session('update-pic')}}
                         </div><br>
                     @endif
 

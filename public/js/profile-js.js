@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //alert('gregre');
+    
     $('#profile-btn').click(function() {
         $('#profile-info').show();
         $('#edit-profile').hide();

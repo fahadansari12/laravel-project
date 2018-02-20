@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-//use App\Http\Controllers\Redirect;
+
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Session;
 class AdminLoginController extends Controller
 {
-    //
+    
     public function index(){
         return view('admin-login.admin-login');
     
     }
 
+    // To Log out user
     public function logadminout()
     {
         Session::flush();
@@ -22,7 +23,7 @@ class AdminLoginController extends Controller
     }
 
 
-
+    // for Login
     public function login(Request $req) {
         $this->validate($req, [
             'email' => 'required',
@@ -33,8 +34,7 @@ class AdminLoginController extends Controller
         $password = $req->input('password');
 
         $checkLogin = DB::table('admin')->where(['email'=>$email,'password'=>$password])->first();
-        //dd(count($checkLogin));
-        //dd($checkLogin->dob);
+       
         if(count($checkLogin) > 0){
              Session::put('admin-name', $checkLogin->name);
              Session::put('admin-email', $checkLogin->email);
@@ -46,17 +46,10 @@ class AdminLoginController extends Controller
              return view('admin');            
         }
         else {
-           // echo "Login Failed!";
+       
            return Redirect::route('admin-login')->with(['error'=> "Invalid email or Password!!"]);
         }
     }
 
-    /* public function logout() {
-        //Auth::logout();
-        Session::forget('admin-name');
-        return Redirect::route('admin-login');
-    } */
-
-    
 
 }
