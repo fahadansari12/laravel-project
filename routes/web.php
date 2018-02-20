@@ -32,10 +32,12 @@ Route::get('/admin-profile','AdminProfileController@index')->name('admin-profile
 
 Route::post('admin-login-result','AdminLoginController@login')->name('admin-log');
 
-Route::post('admin-profile-update','AdminProfileController@updateProfile')->name('admin-edit-profile');
+Route::post('admin-edit-profile','AdminEditController@updateProfile')->name('admin-edit-profile');
+Route::get('/admin-edit-profile','AdminEditController@index')->name('admin-edit');
+//Route::post('admin-profile','')->name('admin-change-password');
 
-Route::post('admin-profile-change-password','AdminProfileController@changePassword')->name('admin-change-password');
-
+Route::get('/admin-change-password','ChangePasswordController@index')->name('admin-password');
+Route::post('admin-change-password','ChangePasswordController@changePassword')->name('admin-change-password');
 /*Route::post('admin-profile-update',function() {
     echo 'updated!';
 })->name('admin-edit-profile');*/

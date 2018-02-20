@@ -42,6 +42,7 @@ class AdminLoginController extends Controller
              Session::put('admin-mobile',$checkLogin->mobile);
              Session::put('admin-dob',$checkLogin->dob);
              Session::put('admin-pic',$checkLogin->photo);
+             Session::put('admin-password',$checkLogin->password);
              return view('admin');            
         }
         else {

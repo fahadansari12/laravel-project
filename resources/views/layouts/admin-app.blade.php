@@ -84,6 +84,7 @@
         </nav>
 
         @yield('admin-content')
+        
     </div>
 
     <!-- Scripts -->
