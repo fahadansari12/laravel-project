@@ -16,9 +16,7 @@ class AdminEditController extends Controller
 
     
         public function updateProfile(Request $req) {
-            $name =  Session::get('admin-name');
-            Session::flush();
-            
+            $name = Auth::user()->name;
             $user = Admin::where('name', $name)->first();
             if($req->input('admin-name')!= null) {
                 $user->name = $req->input('admin-name');
@@ -41,13 +39,7 @@ class AdminEditController extends Controller
            
             $user->save();
     
-            Session::put('admin-name',$user->name);
-            Session::put('admin-email',$user->email);
-            Session::put('admin-address',$user->address);
-            Session::put('admin-dob',$user->dob);
-            Session::put('admin-mobile',$user->mobile);
-            Session::put('admin-pic',$user->photo);
-            Session::put('admin-password',$user->password);
+            
             return redirect('admin-profile')->with('update-response','Profile Updated successfully');
     }
 

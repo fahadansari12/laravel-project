@@ -26,8 +26,8 @@
                                 <img src="{{URL::asset('img/'.Session::get('admin-pic'))}}" class="img-circle"/>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-7 round-img-neighbour">
-                                <p>{{Session::get('admin-name')}}</p>
-                                <small><cite title="">{{Session::get('admin-address')}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+                                <p>{{Auth::user()->name}}</p>
+                                <small><cite title="">{{Auth::user()->address}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
                             </div>
                         </div>
 
@@ -53,23 +53,23 @@
                         {{ csrf_field() }}                            
                             <div class="form-group">
                                 <label for="admin-name">Name:</label>
-                                <input type="text" class="form-control" value="{{Session::get('admin-name')}}" name="admin-name" id="admin-name" placeholder="Enter your name"/>
+                                <input type="text" class="form-control" value="{{Auth::user()->name}}" name="admin-name" id="admin-name" placeholder="Enter your name"/>
                             </div>
                             <div class="form-group">
                                 <label for="admin-email">Email:</label>
-                                <input type="text" class="form-control" value="{{Session::get('admin-email')}}" name="admin-email" id="admin-email" placeholder="Enter your email"/>
+                                <input type="text" class="form-control" value="{{Auth::user()->email}}" name="admin-email" id="admin-email" placeholder="Enter your email"/>
                             </div>
                             <div class="form-group">
                                 <label for="admin-address">Address:</label>
-                                <input type="text" class="form-control" value="{{Session::get('admin-address')}}" name="admin-address" id="admin-address" placeholder="Enter your address"/>
+                                <input type="text" class="form-control" value="{{Auth::user()->address}}" name="admin-address" id="admin-address" placeholder="Enter your address"/>
                              </div>
                             <div class="form-group">
                                 <label for="admin-mobile">Mobile:</label>
-                                <input type="text" class="form-control" value="{{Session::get('admin-mobile')}}" name="admin-mobile" id="admin-mobile" placeholder="Enter your mobile number"/>
+                                <input type="text" class="form-control" value="{{Auth::user()->mobile}}" name="admin-mobile" id="admin-mobile" placeholder="Enter your mobile number"/>
                             </div>
                             <div class="form-group">
                                 <label for="admin-dob">Date of Birth:</label>
-                                <input type="date" class="form-control" value="{{Session::get('admin-dob')}}" name="admin-dob" id="admin-dob" placeholder="Enter your Date of Birth"/>
+                                <input type="date" class="form-control" value="{{Auth::user()->dob}}" name="admin-dob" id="admin-dob" placeholder="Enter your Date of Birth"/>
                             </div>
                             
                             <input type="submit" value="Save" id="submit" class="btn btn-info"/> <input type="reset" value="Reset" id="reset" class="btn btn-info"/>

@@ -33,17 +33,11 @@ class AdminLoginController extends Controller
         $email = $req->input('email');
         $password = $req->input('password');
 
-        $checkLogin = DB::table('admin')->where(['email'=>$email,'password'=>$password])->first();
-       
-        if(count($checkLogin) > 0){
-             Session::put('admin-name', $checkLogin->name);
-             Session::put('admin-email', $checkLogin->email);
-             Session::put('admin-address', $checkLogin->address);
-             Session::put('admin-mobile',$checkLogin->mobile);
-             Session::put('admin-dob',$checkLogin->dob);
-             Session::put('admin-pic',$checkLogin->photo);
-             Session::put('admin-password',$checkLogin->password);
-             return view('admin');            
+        
+        if(Auth::attempt(['email' => $email, 'password' => $password])){
+            $user = Auth::user();
+            $name = $user->name;
+             return view('admin-profile')->with(['admin'=> $user]);            
         }
         else {
        

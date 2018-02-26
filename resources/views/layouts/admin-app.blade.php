@@ -46,10 +46,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if(Session::has('admin-name'))
+                        @guest
+                        <li><a href="{{ route('admin-login') }}">Login</a></li>
+                            <li><a href="{{ route('admin-registration') }}">Register</a></li>
+                        @else
                         <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                {{Session::get('admin-name')}}         
+                                {{Auth::user()->name}}         
                                  <span class="caret"></span>
                                 </a>
 
@@ -72,12 +75,9 @@
                                     
                                 </ul>
                             </li>
-                        @else
-                        <li><a href="{{ route('admin-login') }}">Login</a></li>
-                            <li><a href="{{ route('admin-registration') }}">Register</a></li>
-
+                        
                             
-                        @endif
+                        @endguest
                     </ul>
                 </div>
             </div>

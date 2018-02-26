@@ -22,10 +22,11 @@ Route::get('/admin-registration','AdminUserController@index')->name('admin-regis
 
 Route::get('/admin-login','AdminLoginController@index')->name('admin-login'); // Redirecting to login page
 
-Route::get('/admin-profile','AdminProfileController@index')->name('admin-profile'); // Redirecting to Admin Profile Page
-
-
 Route::post('admin-login-result','AdminLoginController@login')->name('admin-log'); // Calling Login function
+
+
+// ADMIN PROFILE
+Route::get('/admin-profile','AdminProfileController@index')->name('admin-profile'); // Redirecting to Admin Profile Page
 
 Route::post('admin-edit-profile','AdminEditController@updateProfile')->name('admin-edit-profile'); // Calling Function to Update Profile
 
@@ -39,12 +40,13 @@ Route::get('/admin-change-password','ChangePasswordController@index')->name('adm
 
 Route::post('admin-change-password','ChangePasswordController@changePassword')->name('admin-change-password'); // Calling Change Password function
 
-Route::any('/admin/logout','AdminLoginController@logadminout')->name('admin-logout'); // Calling Logout function
-
 Route::get('/admin','AdminController@index')->name('admin'); // Redrecting to Admin Home page
 
 Route::get('/demo','DemoController@index')->name('demo'); // Redirecting to Demo page to get User data to admin home page.
 
+//ADMIN LOGOUT
+Route::any('/admin/logout','AdminLoginController@logadminout')->name('admin-logout'); // Calling Logout function
+
 
 Auth::routes();
 
@@ -53,3 +55,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+

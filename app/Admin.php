@@ -16,4 +16,9 @@ class Admin extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getMobileAttribute($value)
+    {
+        return $value;
+    }
 }

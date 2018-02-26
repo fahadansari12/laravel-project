@@ -1,6 +1,6 @@
 
-@extends('layouts.admin-app')
-@section('admin-content')
+@extends('layouts.app')
+@section('content')
 
 <div class="row row-container">
         <h1 class="prof-head">Profile</h1>
@@ -25,16 +25,18 @@
                                 <img src="{{URL::asset('img/'.Auth::user()->photo)}}" class="img-circle img-responsive"/>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-7 round-img-neighbour">
-                                <p>{{Auth::user()->name}}</p>
-                                <small><cite title="">{{Auth::user()->address}}<i class="glyphicon glyphicon-map-marker"></i></cite></small>
+                                <p>{{ Auth::user()->name }}</p>
+                                <small><cite title="">{{Auth::user()->address}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
                             </div>
                         </div>
 
                         <div class="row left-well-container">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="well well-sm"><a href="#" id="profile-btn" >Profile Info</a></div>
-                                <div class="well well-sm"><a href="{{route('admin-edit-profile')}}" id="edit-profile-btn" >Edit Profile</a></div>
-                                <div class="well well-sm"><a href="{{route('admin-change-password')}}" id="change-password-btn">Change Password</a></div>
+                                <div class="well well-sm"><a href="{{route('user-report')}}" id="report-btn">Daily Report</a></div>
+                                <div class="well well-sm"><a href="#" id="attendance-btn">Attendance</a></div>
+                                <div class="well well-sm"><a href="#" id="user-edit-profile-btn" >Edit Profile</a></div>                                
+                                <div class="well well-sm"><a href="#" id="user-change-password-btn">Change Password</a></div>
                             </div>
                         </div>
                     </div>
@@ -49,15 +51,17 @@
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                        {{Auth::user()->name}}</h4>
+                            {{Auth::user()->name}}</h4>
                         <small><cite title="">{{Auth::user()->address}} <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
                         <p>
                             <i class="glyphicon glyphicon-envelope"></i>{{Auth::user()->email}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i>Contact:{{$admin->mobile}}
+                            <i class="glyphicon glyphicon-globe"></i>Contact: {{Auth::user()->mobile}}
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>Born at {{Auth::user()->dob}}</p>    
+                            <i class="glyphicon glyphicon-gift"></i>Born at {{Auth::user()->dob}}</p>
+                        
+                        
                     </div>
                 </div>
             </div>
