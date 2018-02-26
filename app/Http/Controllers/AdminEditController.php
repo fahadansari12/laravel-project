@@ -22,7 +22,7 @@ class AdminEditController extends Controller
                 $user->name = $req->input('admin-name');
 
             }
-    
+ 
             if($req->input('admin-email')!= null) {
                 $user->email = $req->input('admin-email');
             }
@@ -38,8 +38,7 @@ class AdminEditController extends Controller
     
            
             $user->save();
-    
-            
+           
             return redirect('admin-profile')->with('update-response','Profile Updated successfully');
     }
 
