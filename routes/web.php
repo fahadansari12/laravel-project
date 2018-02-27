@@ -16,25 +16,35 @@ Route::get('/', function () {
 });
 
 
-Route::any('/admin-store','AdminUserController@store')->name('admin-reg');
+Route::any('/admin-store','AdminUserController@store')->name('admin-reg'); // Calling Registration function
 
-Route::get('/admin-registration','AdminUserController@index')->name('admin-registration');
+Route::get('/admin-registration','AdminUserController@index')->name('admin-registration'); // Redirecting to Registration page
 
-Route::get('/admin-login','AdminLoginController@index')->name('admin-login');
+Route::get('/admin-login','AdminLoginController@index')->name('admin-login'); // Redirecting to login page
 
-/* Route::post('admin-login-result',function() {
-    echo 'its working!';
-})->name('admin-log');  */
+Route::get('/admin-profile','AdminProfileController@index')->name('admin-profile'); // Redirecting to Admin Profile Page
 
-Route::post('admin-login-result','AdminLoginController@login')->name('admin-log');
 
-Route::post('/admin-login','AdminLoginController@logout')->name('admin-logout');
+Route::post('admin-login-result','AdminLoginController@login')->name('admin-log'); // Calling Login function
 
-Route::get('/admin','AdminController@index')->name('admin');
+Route::post('admin-edit-profile','AdminEditController@updateProfile')->name('admin-edit-profile'); // Calling Function to Update Profile
 
-Route::get('/demo','DemoController@index')->name('demo');
+Route::get('/admin-edit-profile','AdminEditController@index')->name('admin-edit'); // Redirecting to Profile Edit page
 
-//Route::get('/admin-register','AdminUserController@index');
+Route::post('change-pic','EditPicController@changePic')->name('change-pic'); // To Change Admin profile pic
+
+Route::post('/admin-profile-pic','EditPicController@index')->name('admin-change-pic'); // redirecting to admin edit page
+
+Route::get('/admin-change-password','ChangePasswordController@index')->name('admin-password'); // Redirecting to Change Password Page
+
+Route::post('admin-change-password','ChangePasswordController@changePassword')->name('admin-change-password'); // Calling Change Password function
+
+Route::any('/admin/logout','AdminLoginController@logadminout')->name('admin-logout'); // Calling Logout function
+
+Route::get('/admin','AdminController@index')->name('admin'); // Redrecting to Admin Home page
+
+Route::get('/demo','DemoController@index')->name('demo'); // Redirecting to Demo page to get User data to admin home page.
+
 
 Auth::routes();
 
