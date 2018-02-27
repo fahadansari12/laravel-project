@@ -35,15 +35,17 @@ class AdminLoginController extends Controller
 
         
         if(Auth::attempt(['email' => $email, 'password' => $password])){
-            $user = Auth::user();
+            $user = Auth::admin();
             $name = $user->name;
+            $address = $user->address;
+
              return view('admin-profile')->with(['admin'=> $user]);            
         }
         else {
        
            return Redirect::route('admin-login')->with(['error'=> "Invalid email or Password!!"]);
         }
-    }
+    }   
 
 
 }

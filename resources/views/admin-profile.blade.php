@@ -22,7 +22,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="row">
                             <div class="col-md-5 col-sm-5 col-xs-5 round-img">
-                                <img src="{{URL::asset('img/'.Auth::user()->photo)}}" class="img-circle img-responsive"/>
+                                <img src="{{URL::asset('img/'.Session::get('admin-pic'))}}" class="img-circle img-responsive"/>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-7 round-img-neighbour">
                                 <p>{{Auth::user()->name}}</p>
@@ -45,7 +45,7 @@
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="{{URL::asset('img/'.Auth::user()->photo)}}" alt="" class="img-rounded img-responsive profile-main-image" />
+                        <img src="{{URL::asset('img/'.Session::get('admin-pic'))}}" alt="" class="img-rounded img-responsive profile-main-image" />
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
@@ -55,7 +55,7 @@
                         <p>
                             <i class="glyphicon glyphicon-envelope"></i>{{Auth::user()->email}}
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i>Contact:{{$admin->mobile}}
+                            <i class="glyphicon glyphicon-globe"></i>Contact:{{Auth::user()->mobile}}
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>Born at {{Auth::user()->dob}}</p>    
                     </div>

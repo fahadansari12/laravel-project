@@ -29,7 +29,7 @@ class AdminUserController extends Controller
         $admin->dob = $request->input('dob');
         $admin->address = $request->input('address');
         $admin->mobile = $request->input('mobile');
-        $admin->password = $request->input('password');
+        $admin->password = bcrypt($request->input('password'));
         
         $admin->save();
         return redirect('admin-registration')->with('response','Registered Successfully!');

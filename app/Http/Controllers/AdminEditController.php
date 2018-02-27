@@ -16,7 +16,9 @@ class AdminEditController extends Controller
 
     
         public function updateProfile(Request $req) {
-            $name = Auth::user()->name;
+            $p = Auth::user()->password;
+            return dd($p);
+            $address = Auth::user()->address;
             $user = Admin::where('name', $name)->first();
             if($req->input('admin-name')!= null) {
                 $user->name = $req->input('admin-name');
@@ -35,7 +37,7 @@ class AdminEditController extends Controller
             if($req->input('admin-dob')!= null) {
                 $user->dob = $req->input('admin-dob');
             }
-    
+            
            
             $user->save();
            
