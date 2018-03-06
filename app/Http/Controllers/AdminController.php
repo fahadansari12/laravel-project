@@ -1,20 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-
-    public function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-
-       $users = DB::table('users')->select('id','name','email')->get();
-        return view('admin')->with('users', $users);
+        $this->middleware('auth:admin');
     }
 
-    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('admin');
+    }
 }
-?>
-

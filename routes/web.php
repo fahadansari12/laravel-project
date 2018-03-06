@@ -15,27 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::any('/admin-store','AdminUserController@store')->name('admin-reg'); // Calling Registration function
-
-Route::get('/admin-registration','AdminUserController@index')->name('admin-registration'); // Redirecting to Registration page
-
-Route::get('/admin-login','AdminLoginController@index')->name('admin-login'); // Redirecting to login page
-
-Route::post('admin-login-result','AdminLoginController@login')->name('admin-log'); // Calling Login function
-
-
-//ADMIN LOGOUT
-Route::any('/admin/logout','AdminLoginController@logadminout')->name('admin-logout'); // Calling Logout function
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/admin','AdminController@index')->name('admin.dashboard');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 
-
-
+Route::post('/admin/login','Auth\AdminLoginController@login')->name('admin.login.submit');
